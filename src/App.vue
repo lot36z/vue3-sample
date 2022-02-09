@@ -32,32 +32,32 @@
   <div id="app">
     <button @click="openModal">Click</button>
   </div>
-  <div id="overlay" v-show="showModal">
-    <div id="content">
-      <p>これがモーダルウィンドウです。</p>
-      <p><button @click="closeModal">close</button></p>
-    </div>
-  </div>
+  <Modal :showModal="showModal" @closeModal="closeModal"> </Modal>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import Modal from "./component/Modal.vue";
 
 export default defineComponent({
   name: "App",
+  components: {
+    Modal,
+  },
   setup() {
     const showModal = ref<boolean>(false);
     const openModal = () => {
       showModal.value = true;
     };
     const closeModal = () => {
+      alert("Modal closed");
       showModal.value = false;
     };
     return {
       helloText: "Hello World!",
       showModal,
       openModal,
-      closeModal
+      closeModal,
     };
   },
 });
