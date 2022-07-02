@@ -27,8 +27,11 @@
 <template>
   <div id="overlay" v-show="showModal">
     <div id="content">
-      <p>これがモーダルウィンドウです。</p>
-      <p><button @click="closeModal">close</button></p>
+      <slot name="header"></slot>
+      <slot name="default"></slot>
+      <slot name="footer"
+        ><p><button @click="closeModal">close</button></p></slot
+      >
     </div>
   </div>
 </template>

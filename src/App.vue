@@ -32,7 +32,13 @@
   <div id="app">
     <button @click="openModal">Click</button>
   </div>
-  <Modal :showModal="showModal" @closeModal="closeModal"> </Modal>
+  <Modal :showModal="showModal" @closeModal="closeModal">
+    <template v-slot:header>Header</template>
+    <template v-slot:default>Default</template>
+    <template v-slot:footer
+      ><p><button @click="closeModal">Footer</button></p></template
+    >
+  </Modal>
 </template>
 
 <script lang="ts">
