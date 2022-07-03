@@ -29,6 +29,8 @@
 
 <template>
   <span class="hello">{{ helloText }}</span>
+  <VaButton>va button</VaButton>
+  <VaDateInput @update:view="onUpdate">va dateInput</VaDateInput>
   <div id="app">
     <button @click="openModal">Click</button>
   </div>
@@ -44,10 +46,13 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import Modal from "./component/Modal.vue";
+import { VaButton, VaDateInput } from "vuestic-ui"
 
 export default defineComponent({
   name: "App",
   components: {
+    VaButton,
+    VaDateInput,
     Modal,
   },
   setup() {
@@ -59,11 +64,15 @@ export default defineComponent({
       alert("Modal closed");
       showModal.value = false;
     };
+    const onUpdate = () => {
+      alert("view updated.");
+    }
     return {
       helloText: "Hello World!",
       showModal,
       openModal,
       closeModal,
+      onUpdate,
     };
   },
 });

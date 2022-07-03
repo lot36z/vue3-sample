@@ -44,7 +44,10 @@ module.exports = {
   },
   resolve: {
     //import文で、.tsを省略できるようにする
-    extensions: [".ts"]
+    extensions: [".ts", "..."],
+    // webpackでnpm linkで関連付けたローカルのライブラリがうまく解決されない問題に対処するため。
+    // https://stackoverflow.com/questions/37769228/npm-link-with-webpack-cannot-find-module
+    // symlinks: false,
   },
   //vue-loader v15以上を使う場合に必要
   plugins:[new VueLoaderPlugin()]
